@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/logging_server.dir/logging_server.cpp.o -o logging_server 

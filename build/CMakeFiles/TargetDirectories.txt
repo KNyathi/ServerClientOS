@@ -1,0 +1,14 @@
+/home/nyathi/client_server_project/build/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/build/CMakeFiles/rebuild_cache.dir
+/home/nyathi/client_server_project/build/server1/CMakeFiles/server1.dir
+/home/nyathi/client_server_project/build/server1/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/build/server1/CMakeFiles/rebuild_cache.dir
+/home/nyathi/client_server_project/build/server2/CMakeFiles/server2.dir
+/home/nyathi/client_server_project/build/server2/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/build/server2/CMakeFiles/rebuild_cache.dir
+/home/nyathi/client_server_project/build/logging_server/CMakeFiles/logging_server.dir
+/home/nyathi/client_server_project/build/logging_server/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/build/logging_server/CMakeFiles/rebuild_cache.dir
+/home/nyathi/client_server_project/build/client/CMakeFiles/client_core.dir
+/home/nyathi/client_server_project/build/client/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/build/client/CMakeFiles/rebuild_cache.dir

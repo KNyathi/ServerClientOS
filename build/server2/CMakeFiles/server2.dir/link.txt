@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/server2.dir/server2.cpp.o CMakeFiles/server2.dir/system_info.cpp.o -o server2  -lX11 -lXinerama 

@@ -4,36 +4,47 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <thread>
-#include <vector>
+#include <atomic>
+#include <csignal>
 #include <sys/types.h>
 #include <sys/sysinfo.h>
-#include <pthread.h>
-#include <sys/ptrace.h>
-#include "system_info.h" // Include the header for system info functions
+#include "system_info.h" // Include system info function declarations
+#include <ctime>
 
-#define PORT 5002  // Port for server2
-#define LOG_PORT 6000  // Log server port
+std::string get_current_time() {
+    time_t now = time(0);
+    struct tm tstruct;
+    char buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct); // Up to seconds
+    return std::string(buf);
+}
+
+#define PORT 5002      // Server2 port
+#define LOG_PORT 6000  // Logging server port
+
+std::atomic<bool> running(true);  // Flag to control shutdown
 
 void send_log_to_server(const std::string& log_message) {
-    int sock = 0;
-    struct sockaddr_in serv_addr;
-
-    sock = socket(AF_INET, SOCK_STREAM, 0);
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
-        std::cerr << "Socket creation error for log server\n";
+        std::cerr << "SERVER2|Socket creation error for log server\n";
         return;
     }
 
+    struct sockaddr_in serv_addr {};
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(LOG_PORT);  // Log server on port 6000
+    serv_addr.sin_port = htons(LOG_PORT);
 
     if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
-        std::cerr << "Invalid address\n";
+        std::cerr << "SERVER2|Invalid address\n";
+        close(sock);
         return;
     }
 
     if (connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
-        std::cerr << "Connection to log server failed\n";
+        std::cerr << "SERVER2|Connection to log server failed\n";
+        close(sock);
         return;
     }
 
@@ -41,15 +52,19 @@ void send_log_to_server(const std::string& log_message) {
     close(sock);
 }
 
-// Function to handle client requests
+// Catch termination signal
+void handle_signal(int signum) {
+    send_log_to_server("SERVER2|Server2 stopped by signal");
+    running = false;
+    std::cout << "\nSERVER2|Shutting down...\n";
+    exit(0);  // Force exit to stop blocking accept()
+}
+
 void client_handler(int client_socket) {
     char buffer[1024] = {0};
-    int read_size;
-
-    // Read the client's request
-    read_size = read(client_socket, buffer, sizeof(buffer));
+    int read_size = read(client_socket, buffer, sizeof(buffer));
     if (read_size <= 0) {
-        std::cerr << "Error reading client request\n";
+        send_log_to_server("SERVER2|Error reading client request");
         close(client_socket);
         return;
     }
@@ -57,28 +72,27 @@ void client_handler(int client_socket) {
     std::string request(buffer);
 
     if (request == "INFO") {
-        // Send system information to the client
         int thread_count = get_thread_count();
         int process_count = get_process_count();
-        std::string response = "Thread count: " + std::to_string(thread_count) + "\nProcess count: " + std::to_string(process_count);
-
+        std::string response =  "Time: " +  get_current_time() +
+                                "\nThread count: " + std::to_string(thread_count) +
+                               "\nProcess count: " + std::to_string(process_count);
         send(client_socket, response.c_str(), response.length(), 0);
+        send_log_to_server("SERVER2|Sent system info to client");
     }
 
-    // Log client request
-    send_log_to_server("Client connected, Request: " + request);
-
+    send_log_to_server("SERVER2|Client request received: " + request);
     close(client_socket);
 }
 
 void start_server() {
     int server_fd, client_socket;
-    struct sockaddr_in server_addr, client_addr;
+    struct sockaddr_in server_addr {}, client_addr {};
     socklen_t addr_len = sizeof(client_addr);
 
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) {
-        std::cerr << "Socket creation failed\n";
+        send_log_to_server("SERVER2|Socket creation failed");
         return;
     }
 
@@ -87,39 +101,39 @@ void start_server() {
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
     if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        std::cerr << "Bind failed\n";
+        send_log_to_server("SERVER2|Bind failed");
+        close(server_fd);
         return;
     }
 
     if (listen(server_fd, 5) < 0) {
-        std::cerr << "Listen failed\n";
+        send_log_to_server("SERVER2|Listen failed");
+        close(server_fd);
         return;
     }
 
-    // Log server start
-    send_log_to_server("Server2 started");
+    send_log_to_server("SERVER2|Server2 started");
+    std::cout << "SERVER2|Server2 is listening on port " << PORT << "\n";
 
-    std::cout << "Server2 is listening on port " << PORT << "\n";
-
-    // Handle clients in separate threads
-    while (true) {
+    while (running) {
         client_socket = accept(server_fd, (struct sockaddr*)&client_addr, &addr_len);
         if (client_socket < 0) {
-            std::cerr << "Accept failed\n";
+            if (running)
+                send_log_to_server("SERVER2|Accept failed");
             continue;
         }
 
-        // Log client connection
-        send_log_to_server("Client connected");
-
-        // Handle the client in a new thread
+        send_log_to_server("SERVER2|Client connected");
         std::thread(client_handler, client_socket).detach();
     }
 
     close(server_fd);
+    send_log_to_server("SERVER2|Server2 stopped");
 }
 
 int main() {
+    signal(SIGINT, handle_signal);   // Ctrl+C
+    signal(SIGTERM, handle_signal);  // kill
     start_server();
     return 0;
 }

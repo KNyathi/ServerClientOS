@@ -1,74 +1,65 @@
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <chrono>
-#include <ctime>
+#include <thread>
+#include <netinet/in.h>
 #include <unistd.h>
-#include <arpa/inet.h>
+#include <ctime>
+#include <sstream>
 
 #define LOG_PORT 6000
 
-void log_event(const std::string& message) {
-    // Open the log file for appending
-    std::ofstream log_file("server_logs.txt", std::ios_base::app);
-    if (!log_file) {
-        std::cerr << "Error opening log file.\n";
-        return;
+std::string get_current_time() {
+    time_t now = time(0);
+    char buf[80];
+    strftime(buf, sizeof(buf), "[%Y-%m-%d %H:%M:%S]", localtime(&now));
+    return std::string(buf);
+}
+
+void log_to_file(const std::string& filename, const std::string& message) {
+    std::ofstream logfile(filename, std::ios::app);
+    logfile << get_current_time() << " - " << message << std::endl;
+}
+
+void handle_log_client(int client_socket) {
+    char buffer[1024] = {0};
+    int valread = read(client_socket, buffer, sizeof(buffer));
+    if (valread > 0) {
+        std::string raw_message(buffer);
+        std::string filename = "general_logs.txt";  // fallback
+
+        if (raw_message.rfind("SERVER1|", 0) == 0) {
+            filename = "server1_logs.txt";
+            raw_message = raw_message.substr(8);  // Remove "SERVER1|"
+        } else if (raw_message.rfind("SERVER2|", 0) == 0) {
+            filename = "server2_logs.txt";
+            raw_message = raw_message.substr(8);  // Remove "SERVER2|"
+        }
+
+        log_to_file(filename, raw_message);
+        std::cout << "Logged to " << filename << ": " << raw_message << std::endl;
     }
 
-    // Get the current time
-    auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::tm* local_time = std::localtime(&now);
-    char time_buffer[20];
-    std::strftime(time_buffer, sizeof(time_buffer), "%F %T", local_time);
-
-    // Write to the log
-    log_file << "[" << time_buffer << "] - " << message << std::endl;
+    close(client_socket);
 }
 
 void start_logging_server() {
     int server_fd, client_socket;
-    struct sockaddr_in server_addr, client_addr;
-    socklen_t addr_len = sizeof(client_addr);
+    struct sockaddr_in server_addr;
+    socklen_t addr_len = sizeof(server_addr);
 
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (server_fd < 0) {
-        std::cerr << "Socket creation failed\n";
-        return;
-    }
-
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(LOG_PORT);
     server_addr.sin_addr.s_addr = INADDR_ANY;
+    server_addr.sin_port = htons(LOG_PORT);
 
-    if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
-        std::cerr << "Bind failed\n";
-        return;
-    }
+    bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
+    listen(server_fd, 5);
 
-    if (listen(server_fd, 5) < 0) {
-        std::cerr << "Listen failed\n";
-        return;
-    }
-
-    std::cout << "Logging server started on port " << LOG_PORT << "\n";
+    std::cout << "Logging server started on port " << LOG_PORT << std::endl;
 
     while (true) {
-        client_socket = accept(server_fd, (struct sockaddr*)&client_addr, &addr_len);
-        if (client_socket < 0) {
-            std::cerr << "Accept failed\n";
-            continue;
-        }
-
-        char buffer[1024] = {0};
-        int bytes_received = read(client_socket, buffer, sizeof(buffer));
-
-        if (bytes_received > 0) {
-            std::string log_message(buffer, bytes_received);
-            log_event(log_message);  // Log the received message
-        }
-
-        close(client_socket);
+        client_socket = accept(server_fd, (struct sockaddr*)&server_addr, &addr_len);
+        std::thread(handle_log_client, client_socket).detach();
     }
 
     close(server_fd);

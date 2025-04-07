@@ -1,9 +1,0 @@
-[2025-04-07 01:17:54] - Server2 started
-[2025-04-07 01:18:03] - Server1 started
-[2025-04-07 01:18:09] - Client connected, Request: INFO
-[2025-04-07 01:18:09] - Client connected, Request: INFO
-[2025-04-07 01:23:19] - Server2 started
-[2025-04-07 01:23:25] - Server1 started
-[2025-04-07 01:23:31] - Client connected, Request: INFO
-[2025-04-07 01:23:31] - Client connected
-[2025-04-07 01:23:31] - Client connected, Request: INFO

@@ -242,7 +242,8 @@ server2/CMakeFiles/server2.dir/server2.cpp.o: ../server2/server2.cpp \
   /usr/include/asm-generic/int-ll64.h \
   /usr/include/linux/const.h \
   /usr/include/x86_64-linux-gnu/sys/ptrace.h \
-  /usr/include/x86_64-linux-gnu/bits/ptrace-shared.h
+  /usr/include/x86_64-linux-gnu/bits/ptrace-shared.h \
+  ../server2/system_info.h
 
 server2/CMakeFiles/server2.dir/system_info.cpp.o: ../server2/system_info.cpp \
   /usr/include/stdc-predef.h \

@@ -262,7 +262,14 @@ server2/CMakeFiles/server2.dir/server2.cpp.o: ../server2/server2.cpp \
   /usr/include/asm-generic/types.h \
   /usr/include/asm-generic/int-ll64.h \
   /usr/include/linux/const.h \
-  ../server2/system_info.h
+  ../server2/system_info.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h
 
 server2/CMakeFiles/server2.dir/system_info.cpp.o: ../server2/system_info.cpp \
   /usr/include/stdc-predef.h \
@@ -506,6 +513,14 @@ server2/CMakeFiles/server2.dir/system_info.cpp.o: ../server2/system_info.cpp \
 
 /usr/include/c++/11/sstream:
 
+/usr/include/c++/11/bits/stl_multimap.h:
+
+/usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/c++/11/bits/stl_tree.h:
+
+/usr/include/c++/11/map:
+
 ../server2/system_info.h:
 
 /usr/include/asm-generic/int-ll64.h:
@@ -523,6 +538,8 @@ server2/CMakeFiles/server2.dir/system_info.cpp.o: ../server2/system_info.cpp \
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/c++/11/iostream:
 
@@ -823,6 +840,8 @@ server2/CMakeFiles/server2.dir/system_info.cpp.o: ../server2/system_info.cpp \
 /usr/include/c++/11/ext/aligned_buffer.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
 

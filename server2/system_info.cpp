@@ -18,17 +18,33 @@ int get_process_count() {
     std::string result;
     std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
     
-    if (!pipe) throw std::runtime_error("popen failed!");
+    if (!pipe) {
+        throw std::runtime_error("popen failed!");
+    }
+
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
     }
 
-    return std::stoi(result); // Convert string to integer
+    // If no result was fetched, handle the case
+    if (result.empty()) {
+        throw std::runtime_error("Failed to read process count");
+    }
+
+    try {
+        return std::stoi(result); // Convert string to integer
+    } catch (const std::invalid_argument& e) {
+        throw std::runtime_error("Invalid output from ps aux: " + result);
+    }
 }
 
 std::string get_server2_info() {
     std::ostringstream info;
     info << "Thread count: " << get_thread_count() << "\n";
-    info << "Process count: " << get_process_count();
+    try {
+        info << "Process count: " << get_process_count();
+    } catch (const std::exception& e) {
+        info << "\nError fetching process count: " << e.what();
+    }
     return info.str();
 }

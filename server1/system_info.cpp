@@ -5,6 +5,7 @@
 #include <X11/Xlib.h>
 #include <sstream>
 #include <ctime>
+#include <iostream>
 
 std::string get_window_size() {
     struct winsize size;
@@ -14,14 +15,30 @@ std::string get_window_size() {
     return oss.str();
 }
 
+
+
 int get_monitor_count() {
     Display* display = XOpenDisplay(NULL);
-    if (!display) return -1;
+    if (!display) {
+        std::cerr << "Error: Unable to open X display\n";
+        return -1;  // Return -1 to indicate an error opening the display
+    }
 
     int num_monitors = 0;
+    
+    // Check if Xinerama is active (used in multi-monitor setups)
     if (XineramaIsActive(display)) {
-        XineramaScreenInfo* screens = XineramaQueryScreens(display, &num_monitors);
-        if (screens) XFree(screens);
+        int screen_count = 0;
+        XineramaScreenInfo* screens = XineramaQueryScreens(display, &screen_count);
+        if (screens) {
+            num_monitors = screen_count;
+            XFree(screens);
+        } else {
+            std::cerr << "Error: Unable to query Xinerama screens\n";
+        }
+    } else {
+        // If Xinerama is not active, fallback to ScreenCount
+        num_monitors = ScreenCount(display);
     }
 
     XCloseDisplay(display);

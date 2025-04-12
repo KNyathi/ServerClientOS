@@ -266,7 +266,14 @@ server1/CMakeFiles/server1.dir/server1.cpp.o: ../server1/server1.cpp \
   /usr/include/x86_64-linux-gnu/asm/types.h \
   /usr/include/asm-generic/types.h \
   /usr/include/asm-generic/int-ll64.h \
-  /usr/include/linux/const.h
+  /usr/include/linux/const.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h
 
 server1/CMakeFiles/server1.dir/system_info.cpp.o: ../server1/system_info.cpp \
   /usr/include/stdc-predef.h \
@@ -472,12 +479,11 @@ server1/CMakeFiles/server1.dir/system_info.cpp.o: ../server1/system_info.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/bits/sstream.tcc \
-  /usr/include/c++/11/ctime
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/iostream
 
 
 /usr/include/c++/11/sstream:
-
-/usr/include/X11/Xosdefs.h:
 
 /usr/include/X11/Xfuncproto.h:
 
@@ -493,11 +499,21 @@ server1/CMakeFiles/server1.dir/system_info.cpp.o: ../server1/system_info.cpp \
 
 /usr/include/x86_64-linux-gnu/asm/ioctls.h:
 
-/usr/include/x86_64-linux-gnu/sys/ioctl.h:
-
 ../server1/system_info.h:
 
 ../server1/system_info.cpp:
+
+/usr/include/c++/11/bits/stl_multimap.h:
+
+/usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/x86_64-linux-gnu/sys/ioctl.h:
+
+/usr/include/c++/11/bits/stl_tree.h:
+
+/usr/include/X11/Xosdefs.h:
+
+/usr/include/c++/11/map:
 
 /usr/include/asm-generic/int-ll64.h:
 
@@ -520,6 +536,8 @@ server1/CMakeFiles/server1.dir/system_info.cpp.o: ../server1/system_info.cpp \
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/c++/11/iostream:
 
@@ -811,7 +829,11 @@ server1/CMakeFiles/server1.dir/system_info.cpp.o: ../server1/system_info.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
+/usr/include/c++/11/ext/aligned_buffer.h:
+
 /usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
 

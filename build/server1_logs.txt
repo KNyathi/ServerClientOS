@@ -91,3 +91,181 @@
 [2025-04-12 21:29:36] - Client connected
 [2025-04-12 21:29:38] - Sent system info to client
 [2025-04-12 21:29:38] - Client request received: INFO
+[2025-04-12 21:32:14] - Client connected
+[2025-04-12 21:32:17] - Client connected
+[2025-04-12 21:32:22] - Sent system info to client
+[2025-04-12 21:32:22] - Client request received: INFO
+[2025-04-12 21:32:32] - Sent system info to client
+[2025-04-12 21:32:32] - Client request received: INFO
+[2025-04-12 21:34:23] - Client connected
+[2025-04-12 21:34:32] - Sent system info to client
+[2025-04-12 21:34:32] - Client request received: INFO
+[2025-04-12 21:37:30] - Client connected
+[2025-04-12 21:37:31] - Sent system info to client
+[2025-04-12 21:37:31] - Client request received: INFO
+[2025-04-12 21:54:34] - Server1 stopped by signal
+[2025-04-12 21:54:35] - Server1 started
+[2025-04-12 21:54:59] - Client connected
+[2025-04-12 21:55:02] - Client connected
+[2025-04-12 21:55:05] - Sent system info to client4
+[2025-04-12 21:55:05] - Client 4request received: INFO
+[2025-04-12 21:55:05] - Client 4 disconnected
+[2025-04-12 21:55:12] - Sent system info to client2
+[2025-04-12 21:55:12] - Client 2 disconnected
+[2025-04-12 21:55:12] - Client 2request received: INFO
+[2025-04-12 21:55:21] - Client connected
+[2025-04-12 21:55:24] - Client connected
+[2025-04-12 21:55:30] - Sent system info to client6
+[2025-04-12 21:55:30] - Client 6 disconnected
+[2025-04-12 21:55:30] - Client 6request received: INFO
+[2025-04-12 21:55:35] - Client 8request received: INFO
+[2025-04-12 21:55:35] - Client 8 disconnected
+[2025-04-12 21:55:35] - Sent system info to client8
+[2025-04-12 21:55:48] - Client connected
+[2025-04-12 21:55:49] - Sent system info to client10
+[2025-04-12 21:55:49] - Client 10request received: INFO
+[2025-04-12 21:55:49] - Client 10 disconnected
+[2025-04-12 21:55:54] - Client connected
+[2025-04-12 21:55:55] - Sent system info to client12
+[2025-04-12 21:55:55] - Client 12 disconnected
+[2025-04-12 21:55:55] - Client 12request received: INFO
+[2025-04-12 22:03:44] - Server1 stopped by signal
+[2025-04-12 22:03:46] - Server1 started
+[2025-04-12 22:04:06] - Client 1 disconnected.
+[2025-04-12 22:04:06] - Sent system info to client 1
+[2025-04-12 22:04:06] - Client 1 request received: INFO
+[2025-04-12 22:04:17] - Sent system info to client 2
+[2025-04-12 22:04:17] - Client 2 request received: INFO
+[2025-04-12 22:04:17] - Client 2 disconnected.
+[2025-04-12 22:04:40] - Sent system info to client 4
+[2025-04-12 22:04:40] - Client 4 request received: INFO
+[2025-04-12 22:04:40] - Client 4 disconnected.
+[2025-04-12 22:04:56] - Sent system info to client 3
+[2025-04-12 22:04:56] - Client 3 request received: INFO
+[2025-04-12 22:04:56] - Client 3 disconnected.
+[2025-04-12 22:08:24] - Server1 stopped by signal
+[2025-04-12 22:08:26] - Server1 started
+[2025-04-12 22:08:51] - Client 1 connected
+[2025-04-12 22:08:51] - Sent system info to client 1
+[2025-04-12 22:08:51] - Client 1 request received: INFO
+[2025-04-12 22:08:51] - Client 1 disconnected
+[2025-04-12 22:09:26] - Client 1 connected
+[2025-04-12 22:09:26] - Sent system info to client 1
+[2025-04-12 22:09:26] - Client 1 request received: INFO
+[2025-04-12 22:09:26] - Client 1 disconnected
+[2025-04-12 22:09:33] - Client 1 connected
+[2025-04-12 22:09:33] - Sent system info to client 1
+[2025-04-12 22:09:33] - Client 1 request received: INFO
+[2025-04-12 22:09:33] - Client 1 disconnected
+[2025-04-12 22:09:43] - Client 1 connected
+[2025-04-12 22:09:43] - Sent system info to client 1
+[2025-04-12 22:09:43] - Client 1 disconnected
+[2025-04-12 22:09:43] - Client 1 request received: INFO
+[2025-04-12 22:09:48] - Client 1 connected
+[2025-04-12 22:09:48] - Sent system info to client 1
+[2025-04-12 22:09:48] - Client 1 request received: INFO
+[2025-04-12 22:09:48] - Client 1 disconnected
+[2025-04-12 22:14:34] - Server1 stopped by signal
+[2025-04-12 22:14:36] - Server1 started
+[2025-04-12 22:15:04] - Client connected
+[2025-04-12 22:15:07] - Client connected
+[2025-04-12 22:15:09] - Sent system info to client 1
+[2025-04-12 22:15:09] - Client 1 request received: INFO
+[2025-04-12 22:15:12] - Sent system info to client 2
+[2025-04-12 22:15:12] - Client 2 request received: INFO
+[2025-04-12 22:15:20] - Client connected
+[2025-04-12 22:15:23] - Sent system info to client 3
+[2025-04-12 22:15:23] - Client 3 request received: INFO
+[2025-04-12 22:15:32] - Client connected
+[2025-04-12 22:15:34] - Sent system info to client 4
+[2025-04-12 22:15:34] - Client 4 request received: INFO
+[2025-04-12 22:15:40] - Client connected
+[2025-04-12 22:15:43] - Sent system info to client 5
+[2025-04-12 22:15:43] - Client 5 request received: INFO
+[2025-04-12 22:16:29] - Server1 stopped by signal
+[2025-04-12 22:16:31] - Bind failed
+[2025-04-12 22:16:35] - Bind failed
+[2025-04-12 22:16:50] - Server1 started
+[2025-04-12 22:17:15] - Client connected
+[2025-04-12 22:17:19] - Sent system info to client 1
+[2025-04-12 22:17:19] - Client 1 request received: INFO
+[2025-04-12 22:17:52] - Client connected
+[2025-04-12 22:17:55] - Sent system info to client 2
+[2025-04-12 22:17:55] - Client 2 request received: INFO
+[2025-04-12 22:17:58] - Client connected
+[2025-04-12 22:18:00] - Sent system info to client 3
+[2025-04-12 22:18:00] - Client 3 request received: INFO
+[2025-04-12 22:22:38] - Server1 stopped by signal
+[2025-04-12 22:22:39] - Bind failed
+[2025-04-12 22:22:41] - Bind failed
+[2025-04-12 22:22:42] - Bind failed
+[2025-04-12 22:22:44] - Bind failed
+[2025-04-12 22:22:52] - Bind failed
+[2025-04-12 22:22:53] - Bind failed
+[2025-04-12 22:23:03] - Bind failed
+[2025-04-12 22:23:09] - Bind failed
+[2025-04-12 22:23:32] - Bind failed
+[2025-04-12 22:23:34] - Bind failed
+[2025-04-12 22:23:35] - Bind failed
+[2025-04-12 22:24:49] - Server1 started
+[2025-04-12 22:25:08] - Client connected
+[2025-04-12 22:25:10] - Sent system info to client 1
+[2025-04-12 22:25:10] - Client 1 request received: INFO
+[2025-04-12 22:25:10] - Client 1 disconnected
+[2025-04-12 22:25:16] - Client connected
+[2025-04-12 22:25:18] - Client 2 request received: INFO
+[2025-04-12 22:25:18] - Client 2 disconnected
+[2025-04-12 22:25:18] - Sent system info to client 2
+[2025-04-12 22:25:24] - Client connected
+[2025-04-12 22:25:26] - Sent system info to client 3
+[2025-04-12 22:25:26] - Client 3 request received: INFO
+[2025-04-12 22:25:26] - Client 3 disconnected
+[2025-04-12 22:25:37] - Client connected
+[2025-04-12 22:25:38] - Error reading client request
+[2025-04-12 22:32:51] - Server1 stopped by signal
+[2025-04-12 22:33:03] - Server1 started
+[2025-04-12 22:33:15] - Client connected
+[2025-04-12 22:33:18] - Sent system info to client 1
+[2025-04-12 22:33:18] - Client 1 request received: INFO
+[2025-04-12 22:33:18] - Client 1 disconnected
+[2025-04-12 22:33:25] - Client connected
+[2025-04-12 22:33:27] - Client disconnected
+
+[2025-04-12 22:33:33] - Client connected
+[2025-04-12 22:33:35] - Client disconnected
+
+[2025-04-12 22:33:41] - Client connected
+[2025-04-12 22:33:42] - Sent system info to client 2
+[2025-04-12 22:33:42] - Client 2 request received: INFO
+[2025-04-12 22:33:42] - Client 2 disconnected
+[2025-04-12 22:34:09] - Server1 stopped by signal
+[2025-04-12 22:40:22] - Server1 started
+[2025-04-12 22:40:57] - Client connected
+[2025-04-12 22:40:58] - Sent system info to client 1
+[2025-04-12 22:40:58] - Client 1 request received: INFO
+[2025-04-12 22:41:07] - Client connected
+[2025-04-12 22:41:08] - Sent system info to client 2
+[2025-04-12 22:41:08] - Client 2 request received: INFO
+[2025-04-12 22:48:22] - Client connected
+[2025-04-12 22:48:37] - Client connected
+[2025-04-12 22:48:37] - Client disconnected
+
+[2025-04-12 22:48:43] - Client connected
+[2025-04-12 22:48:45] - Sent system info to client 3
+[2025-04-12 22:48:45] - Client 3 request received: INFO
+[2025-04-12 22:48:51] - Sent system info to client 4
+[2025-04-12 22:48:51] - Client 4 request received: INFO
+[2025-04-12 22:49:19] - Client connected
+[2025-04-12 22:49:20] - Sent system info to client 5
+[2025-04-12 22:49:20] - Client 5 request received: INFO
+[2025-04-12 22:54:18] - Server1 stopped by signal
+[2025-04-12 23:13:42] - Server1 started
+[2025-04-12 23:14:05] - Client connected
+[2025-04-12 23:14:08] - Client connected
+[2025-04-12 23:14:10] - Sent system info to client 1
+[2025-04-12 23:14:10] - Client 1 request received: INFO
+[2025-04-12 23:14:13] - Sent system info to client 2
+[2025-04-12 23:14:13] - Client 2 request received: INFO
+[2025-04-12 23:14:37] - Client connected
+[2025-04-12 23:14:39] - Sent system info to client 3
+[2025-04-12 23:14:39] - Client 3 request received: INFO

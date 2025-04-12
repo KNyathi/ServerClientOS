@@ -1,4 +1,3 @@
-// server2.cpp
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
@@ -10,6 +9,7 @@
 #include <sys/sysinfo.h>
 #include "system_info.h" // Include system info function declarations
 #include <ctime>
+#include <map>
 
 std::string get_current_time() {
     time_t now = time(0);
@@ -25,6 +25,10 @@ std::string get_current_time() {
 
 std::atomic<bool> running(true);  // Flag to control shutdown
 
+std::map<std::string, int> client_ids; // Map to store IP + Port as the key and Client ID as the value
+int next_client_id = 1; // Track the next available client ID
+
+// Function to send logs to another server
 void send_log_to_server(const std::string& log_message) {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
@@ -52,7 +56,7 @@ void send_log_to_server(const std::string& log_message) {
     close(sock);
 }
 
-// Catch termination signal
+// Signal handler for graceful shutdown
 void handle_signal(int signum) {
     send_log_to_server("SERVER2|Server2 stopped by signal");
     running = false;
@@ -60,31 +64,48 @@ void handle_signal(int signum) {
     exit(0);  // Force exit to stop blocking accept()
 }
 
-void client_handler(int client_socket) {
+// Function to handle each client request
+void client_handler(int client_socket, struct sockaddr_in client_addr) {
     char buffer[1024] = {0};
     int read_size = read(client_socket, buffer, sizeof(buffer));
     if (read_size <= 0) {
-        send_log_to_server("SERVER2|Error reading client request");
+        if (read_size == 0) {
+            std::cerr << "SERVER2|Client disconnected\n";
+            send_log_to_server("SERVER2|Client disconnected\n");
+        } else {
+            std::cerr << "SERVER2|Error reading client request\n";
+            send_log_to_server("SERVER2|Error reading client request");
+        }
         close(client_socket);
         return;
     }
 
+    // Get the client's IP and port as a unique identifier
+    std::string client_key = std::to_string(client_addr.sin_addr.s_addr) + ":" + std::to_string(client_addr.sin_port);
+
+    // Assign a client ID if it's a new connection, otherwise reuse the existing ID
+    if (client_ids.find(client_key) == client_ids.end()) {
+        client_ids[client_key] = next_client_id++;
+    }
+
+    int client_id = client_ids[client_key];
     std::string request(buffer);
 
     if (request == "INFO") {
         int thread_count = get_thread_count();
         int process_count = get_process_count();
-        std::string response =  "Time: " +  get_current_time() +
-                                "\nThread count: " + std::to_string(thread_count) +
+        std::string response = "Client " + std::to_string(client_id) + " - Time: " + get_current_time() +
+                               "\nThread count: " + std::to_string(thread_count) +
                                "\nProcess count: " + std::to_string(process_count);
         send(client_socket, response.c_str(), response.length(), 0);
-        send_log_to_server("SERVER2|Sent system info to client");
+        send_log_to_server("SERVER2|Sent system info to client " + std::to_string(client_id));
     }
 
-    send_log_to_server("SERVER2|Client request received: " + request);
+    send_log_to_server("SERVER2|Client " + std::to_string(client_id) + " request received: " + request);
     close(client_socket);
 }
 
+// Main function to start the server
 void start_server() {
     int server_fd, client_socket;
     struct sockaddr_in server_addr {}, client_addr {};
@@ -96,8 +117,7 @@ void start_server() {
         return;
     }
 
-    server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(PORT);
+    server_addr.sin_family = AF_INET;server_addr.sin_port = htons(PORT);
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
     if (bind(server_fd, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
@@ -124,7 +144,7 @@ void start_server() {
         }
 
         send_log_to_server("SERVER2|Client connected");
-        std::thread(client_handler, client_socket).detach();
+        std::thread(client_handler, client_socket, client_addr).detach();
     }
 
     close(server_fd);

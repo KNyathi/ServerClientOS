@@ -1,0 +1,4 @@
+/home/nyathi/client_server_project/client/build-gui-Desktop-Debug/CMakeFiles/gui.dir
+/home/nyathi/client_server_project/client/build-gui-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/nyathi/client_server_project/client/build-gui-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/nyathi/client_server_project/client/build-gui-Desktop-Debug/CMakeFiles/gui_autogen.dir

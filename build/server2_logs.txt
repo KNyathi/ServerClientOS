@@ -20,3 +20,60 @@
 [2025-04-08 01:50:03] - Client connected
 [2025-04-08 01:50:03] - Sent system info to client
 [2025-04-08 01:50:03] - Client request received: INFO
+[2025-04-08 01:55:53] - Client connected
+[2025-04-08 01:55:53] - Client request received: INFO
+[2025-04-08 01:55:53] - Sent system info to client
+[2025-04-08 01:57:05] - Client connected
+[2025-04-08 01:57:05] - Sent system info to client
+[2025-04-08 01:57:05] - Client request received: INFO
+[2025-04-08 01:57:12] - Client connected
+[2025-04-08 01:57:12] - Sent system info to client
+[2025-04-08 01:57:12] - Client request received: INFO
+[2025-04-11 21:07:03] - Client connected
+[2025-04-11 21:07:03] - Sent system info to client
+[2025-04-11 21:07:03] - Client request received: INFO
+[2025-04-11 21:43:36] - Client connected
+[2025-04-11 21:43:36] - Client request received: info
+
+[2025-04-11 21:44:53] - Client connected
+[2025-04-11 21:44:53] - Client request received: info
+
+[2025-04-11 21:45:08] - Client connected
+[2025-04-11 21:45:08] - Client request received: info
+
+[2025-04-12 21:01:10] - Server2 stopped by signal
+[2025-04-12 21:01:12] - Server2 started
+[2025-04-12 21:01:36] - Client connected
+[2025-04-12 21:01:36] - Client request received: info
+
+[2025-04-12 21:01:38] - Client connected
+[2025-04-12 21:01:38] - Client request received: info
+
+[2025-04-12 21:01:41] - Client connected
+[2025-04-12 21:01:41] - Client request received: info
+
+[2025-04-12 21:01:57] - Client connected
+[2025-04-12 21:01:57] - Client request received: info
+
+[2025-04-12 21:03:01] - Server2 stopped by signal
+[2025-04-12 21:03:05] - Server2 started
+[2025-04-12 21:03:32] - Client connected
+[2025-04-12 21:03:32] - Client request received: info
+
+[2025-04-12 21:03:47] - Client connected
+[2025-04-12 21:03:47] - Client request received: info
+
+[2025-04-12 21:10:30] - Client connected
+[2025-04-12 21:10:30] - Client request received: INFO
+[2025-04-12 21:10:30] - Sent system info to client
+[2025-04-12 21:14:19] - Client connected
+[2025-04-12 21:14:19] - Client request received: INFO
+[2025-04-12 21:14:19] - Sent system info to client
+[2025-04-12 21:17:04] - Client connected
+[2025-04-12 21:17:10] - Sent system info to client
+[2025-04-12 21:17:10] - Client request received: INFO
+[2025-04-12 21:18:11] - Client connected
+[2025-04-12 21:18:21] - Error reading client request
+[2025-04-12 21:18:24] - Client connected
+[2025-04-12 21:18:26] - Sent system info to client
+[2025-04-12 21:18:26] - Client request received: INFO

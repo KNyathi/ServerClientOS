@@ -12,3 +12,82 @@
 [2025-04-08 01:50:03] - Client connected
 [2025-04-08 01:50:03] - Sent system info to client
 [2025-04-08 01:50:03] - Client request received: INFO
+[2025-04-08 01:55:53] - Client connected
+[2025-04-08 01:55:53] - Sent system info to client
+[2025-04-08 01:55:53] - Client request received: INFO
+[2025-04-08 01:56:33] - Server1 stopped by signal
+[2025-04-08 01:56:49] - Server1 started
+[2025-04-08 01:57:05] - Client connected
+[2025-04-08 01:57:05] - Sent system info to client
+[2025-04-08 01:57:05] - Client request received: INFO
+[2025-04-08 01:57:12] - Client connected
+[2025-04-08 01:57:12] - Client request received: INFO
+[2025-04-08 01:57:12] - Sent system info to client
+[2025-04-11 21:07:03] - Client connected
+[2025-04-11 21:07:03] - Client request received: INFO
+[2025-04-11 21:07:03] - Sent system info to client
+[2025-04-11 21:43:30] - Client connected
+[2025-04-11 21:43:30] - Client request received: info
+
+[2025-04-11 21:43:57] - Client connected
+[2025-04-11 21:43:57] - Client request received: info
+
+[2025-04-11 21:44:37] - Client connected
+[2025-04-11 21:44:37] - Client request received: info
+
+[2025-04-11 21:44:49] - Client connected
+[2025-04-11 21:44:49] - Client request received: info
+
+[2025-04-12 21:00:37] - Client connected
+[2025-04-12 21:00:37] - Client request received: info
+
+[2025-04-12 21:00:54] - Server1 stopped by signal
+[2025-04-12 21:00:55] - Bind failed
+[2025-04-12 21:01:00] - Bind failed
+[2025-04-12 21:01:25] - Bind failed
+[2025-04-12 21:02:51] - Server1 started
+[2025-04-12 21:03:24] - Client connected
+[2025-04-12 21:03:24] - Client request received: info
+
+[2025-04-12 21:03:37] - Client connected
+[2025-04-12 21:03:37] - Client request received: info
+
+[2025-04-12 21:03:53] - Client connected
+[2025-04-12 21:03:53] - Client request received: info
+
+[2025-04-12 21:10:21] - Client connected
+[2025-04-12 21:10:21] - Sent system info to client
+[2025-04-12 21:10:21] - Client request received: INFO
+[2025-04-12 21:10:47] - Client connected
+[2025-04-12 21:10:47] - Sent system info to client
+[2025-04-12 21:10:47] - Client request received: INFO
+[2025-04-12 21:11:00] - Client connected
+[2025-04-12 21:11:00] - Sent system info to client
+[2025-04-12 21:11:00] - Client request received: INFO
+[2025-04-12 21:14:14] - Client connected
+[2025-04-12 21:14:14] - Client request received: INFO
+[2025-04-12 21:14:14] - Sent system info to client
+[2025-04-12 21:16:58] - Client connected
+[2025-04-12 21:17:01] - Sent system info to client
+[2025-04-12 21:17:01] - Client request received: INFO
+[2025-04-12 21:17:33] - Client connected
+[2025-04-12 21:17:35] - Error reading client request
+[2025-04-12 21:17:43] - Client connected
+[2025-04-12 21:17:45] - Error reading client request
+[2025-04-12 21:17:49] - Client connected
+[2025-04-12 21:17:51] - Error reading client request
+[2025-04-12 21:17:54] - Client connected
+[2025-04-12 21:17:56] - Sent system info to client
+[2025-04-12 21:17:56] - Client request received: INFO
+[2025-04-12 21:29:07] - Client connected
+[2025-04-12 21:29:09] - Sent system info to client
+[2025-04-12 21:29:09] - Client request received: INFO
+[2025-04-12 21:29:20] - Client connected
+[2025-04-12 21:29:22] - Client request received: INFO
+[2025-04-12 21:29:22] - Sent system info to client
+[2025-04-12 21:29:32] - Client connected
+[2025-04-12 21:29:33] - Client request received: INFO
+[2025-04-12 21:29:33] - Sent system info to client
+[2025-04-12 21:29:36] - Client connected
+[2025-04-12 21:29:38] - Sent system info to client
+[2025-04-12 21:29:38] - Client request received: INFO

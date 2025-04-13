@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  logging_server:
+    build:
+      context: ./logging_server
+    container_name: logging_server
+    ports:
+      - "6000:6000"
+
+  server1:
+    build:
+      context: ./server1
+    container_name: server1
+    ports:
+      - "5001:5001"
+    depends_on:
+      - logging_server
+
+  server2:
+    build:
+      context: ./server2
+    container_name: server2
+    ports:
+      - "5002:5002"
+    depends_on:
+      - logging_server
+
+  gui_client:
+    build:
+      context: ./client/gui
+    container_name: gui_client
+    depends_on:
+      - server1
+      - server2
+      - logging_server
+    # For GUI display support
+    environment:
+      - DISPLAY=:0
+      - XDG_RUNTIME_DIR=/tmp/runtime-root
+      - XAUTHORITY=/tmp/.Xauthority
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/tmp/.Xauthority:ro
+    network_mode: "host"

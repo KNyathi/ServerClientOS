@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/sysinfo.h>
 #include <map>
+#include <netdb.h> //gethostbyname
 
 extern std::string get_window_size();
 extern int get_monitor_count();
@@ -30,15 +31,25 @@ void send_log_to_server(const std::string& log_message) {
         return;
     }
 
+    struct hostent* he = gethostbyname("logging_server");
+    if (he == nullptr) {
+        std::cerr << "SERVER1|Hostname resolution failed for log server\n";
+        close(sock);
+        return;
+    }
+
     struct sockaddr_in serv_addr {};
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(LOG_PORT);
+    serv_addr.sin_addr = *(struct in_addr*)he->h_addr;
 
+    /*
     if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) {
         std::cerr << "SERVER1|Invalid address for log server\n";
         close(sock);
         return;
     }
+    */
 
     if (connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         std::cerr << "SERVER1|Connection to log server failed\n";

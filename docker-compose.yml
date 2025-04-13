@@ -7,6 +7,7 @@ services:
     container_name: logging_server
     ports:
       - "6000:6000"
+    
 
   server1:
     build:
@@ -37,9 +38,9 @@ services:
     # For GUI display support
     environment:
       - DISPLAY=:0
-      - XDG_RUNTIME_DIR=/tmp/runtime-root
-      - XAUTHORITY=/tmp/.Xauthority
+      - XAUTHORITY=/home/nyathi/.Xauthority
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - $HOME/.Xauthority:/tmp/.Xauthority:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /home/nyathi/.Xauthority:/home/nyathi/.Xauthority:rw
+    privileged: true #allow extra privileges to the container
     network_mode: "host"

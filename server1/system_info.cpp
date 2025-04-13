@@ -8,41 +8,36 @@
 #include <iostream>
 
 std::string get_window_size() {
+    // Check if the terminal device is available (if we're running in a Docker container)
     struct winsize size;
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &size) == -1) {
+        // If ioctl fails, return default size (assumed 24x80)
+        return "24x80"; 
+    }
+
+    // If ioctl succeeds, return the actual window size
     std::ostringstream oss;
     oss << size.ws_row << "x" << size.ws_col;
     return oss.str();
 }
 
 
-
 int get_monitor_count() {
     Display* display = XOpenDisplay(NULL);
-    if (!display) {
-        std::cerr << "Error: Unable to open X display\n";
-        return -1;  // Return -1 to indicate an error opening the display
-    }
+    if (!display) return 1;
 
-    int num_monitors = 0;
-    
-    // Check if Xinerama is active (used in multi-monitor setups)
+    int count = 1; // default to 1 monitor
     if (XineramaIsActive(display)) {
-        int screen_count = 0;
-        XineramaScreenInfo* screens = XineramaQueryScreens(display, &screen_count);
+        int num;
+        XineramaScreenInfo* screens = XineramaQueryScreens(display, &num);
         if (screens) {
-            num_monitors = screen_count;
+            count = num;
             XFree(screens);
-        } else {
-            std::cerr << "Error: Unable to query Xinerama screens\n";
         }
-    } else {
-        // If Xinerama is not active, fallback to ScreenCount
-        num_monitors = ScreenCount(display);
     }
 
     XCloseDisplay(display);
-    return num_monitors;
+    return count;
 }
 
 std::string get_current_time() {
